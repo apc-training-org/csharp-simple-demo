@@ -29,12 +29,11 @@
   * `GitHub.copilot-chat`
   * `ms-dotnettools.csharp`
   * `ms-dotnettools.vscode-dotnet-runtime`
-* .NET SDK 8.0 ※要確認※
+* .NET SDK 8.0
 
 ### Step 1: Visual Studio Code を起動
 
-※ワークディレクトリはどうする？
-※※いろんな意味で Codespaces に寄せちゃう方がよい気がする
+任意の場所に本ワークショップ用のディレクトリ (e.g. `CopilotTraining`) を作成し、Visual Studio Code で当該ディレクトリを開いてください。
 
 ### Step 2: ソリューションおよびプロジェクトの作成
 
@@ -43,8 +42,7 @@ Visual Studio Code でターミナルを起動し、以下のコマンドを実�
 ```Shell
 dotnet new sln
 ```
-
-以下が出力されれば OK です。
+以下が出力されることを確認してください。
 
 ```Shell
 The template "Solution File" was created successfully.
@@ -56,7 +54,7 @@ The template "Solution File" was created successfully.
 dotnet new console -o HelloCopilot
 ```
 
-以下が出力されれば OK です。
+以下が出力されることを確認してください。
 
 ```Shell
 The template "Console App" was created successfully.
@@ -74,33 +72,21 @@ Restore succeeded.
 dotnet sln add HelloCopilot/HelloCopilot.csproj
 ```
 
-以下が出力されれば OK です。
+以下が出力されることを確認してください。
 
 ```Shell
 Project `HelloCopilot/HelloCopilot.csproj` added to the solution.
-```
-
-Visual Studio Code で開いているディレクトリ内が以下のようになっていることを確認して次へ進みます。
-
-```Shell
-※ tree コマンドの実行結果を貼る or スクショ貼る
-├── .devcontainer
-    └── devcontainer.json
-├── CopilotTraining.sln
-└── HelloCopilot
-    ├── HelloCopilot.csproj
-    └── Program.cs
 ```
 
 ### Step 3: GitHub Copilot の状態を確認
 
 Visual Studio Code ウィンドウの右下にある GitHub Copilot のアイコンを押下してください。
 
-※スクショ貼る※
+![Copilot-Icon](./images/01_Copilot_Icon.png)
 
-`Status: Ready` となっていれば OK です。次へ進みます。
+`Status: Ready` となっていれば問題ありません。
 
-※なっていない場合の対処を書く※
+![Copilot-Status](./images/02_Copilot_Status.png)
 
 ### Step 4: 最初のコードを記述
 
@@ -115,7 +101,7 @@ using
 
 2 行目の `using` を記述すると GitHub Copilot がサジェストをしてくれます。
 
-※スクショ貼る※
+![Copilot-Suggest-01](./images/03_Copilot_Suggest_01.png)
 
 Tab キーを押下してサジェストを受け入れましょう。
 
@@ -126,7 +112,7 @@ using System.Collections.Generic;
 
 受け入れたあとに改行をすると `using System.Linq` がサジェストされるのでこれも受け入れます。
 
-※スクショ貼る※
+![Copilot-Suggest-02](./images/04_Copilot_Suggest_02.png)
 
 最終的に以下の形になるまでサジェストを受け入れ続けてください。
 
@@ -182,7 +168,7 @@ namespace HelloCopilot
 
 入力を完了して改行すると Copilot からコードがサジェストされるので受け入れましょう。
 
-※スクショ貼る※
+![Copilot-Suggest-03](./images/05_Copilot_Suggest_03.png)
 
 ここまででコードは以下のようになります。必ずしも全く同じコードになるわけではありませんが、概ね同じようなコードになっていると思います。
 
@@ -215,7 +201,7 @@ namespace HelloCopilot
 dotnet run --project HelloCopilot/HelloCopilot.csproj
 ```
 
-以下が出力されれば OK です。
+以下が出力されることを確認してください。
 
 ```Shell
 Hello, Copilot 0
@@ -412,7 +398,7 @@ Copilot Chat を用いて、これまでに作成したメソッドのテスト�
 dotnet new mstest -o HelloCopilotTest
 ```
 
-以下が出力されれば OK です。
+以下が出力されることを確認してください。
 
 ```Shell
 The template "MSTest Test Project" was created successfully.
@@ -430,7 +416,7 @@ Restore succeeded.
 dotnet sln add HelloCopilotTest/HelloCopilotTest.csproj
 ```
 
-以下が出力されれば OK です。
+以下が出力されることを確認してください。
 
 ```Shell
 Project `HelloCopilotTest/HelloCopilotTest.csproj` added to the solution.
@@ -442,13 +428,13 @@ Project `HelloCopilotTest/HelloCopilotTest.csproj` added to the solution.
 dotnet add HelloCopilotTest/HelloCopilotTest.csproj reference HelloCopilot/HelloCopilot.csproj
 ```
 
-以下が出力されれば OK です。
+以下が出力されることを確認してください。
 
 ```Shell
 Reference `..\HelloCopilot\HelloCopilot.csproj` added to the project.
 ```
 
-Copilot Chat にテストコードの生成を依頼してみましょう。VS Code のウィンドウ左にあるバーから Copilot Chat を開き、以下の文で問いかけてください。
+Copilot Chat にテストコードの生成を依頼してみましょう。Visual Studio Code のウィンドウ左にあるバーから Copilot Chat を開き、以下の文で問いかけてください。
 
 ```
 Program クラス内にある Sum メソッドと GenerateLockerNumbers メソッドのテストを実行するコードを生成してください。
