@@ -2,190 +2,729 @@
 
 ![Cover image](./images/csharp-cover.jpg)
 
-This contains a simple demo for Copilot for **C#** and **.NET** through **Visual Studio IDE.** This is going to be useful for customers who are interested in using Copilot for C# and .NET and want to use Copilot to generate code through Visual Studio IDE.
+本ワークショップは、GitHub Copilot を用いた C# および .NET の開発を体験する簡単なデモです。Visual Studio Code とその拡張機能を通じて、GitHub Copilot が C# や .NET を用いた開発をどのようにサポートするか体感できます。
 
-Note that Copilot extension for Visual Studio IDE is **only available for Windows**. If you are using Mac, you can use Copilot through VS Code.
+## 🎯 ゴール
 
-## 🎯 Goal
+* ワークショップを通じて単純な .NET アプリケーションを作成する
 
-Welcome to GitHub Copilot! In this example, we'll show you how to use Copilot to write a simple .NET application.
+## ✍️ プログラミング言語
 
-## ✍️ Programming Languages
-
-- C#
+* C#
 
 ## 💻 IDE
 
-- [Visual Studio IDE](https://visualstudio.microsoft.com/downloads/) for Windows
+- [Visual Studio Code](https://code.visualstudio.com/download)
 
-## 🗒️ Guide
+## 🗒️ ガイド
 
-This guide will walk you through the steps to get started with Copilot in Visual Studio IDE.
+このガイドでは Visual Studio Code で Copilot を利用する手順を説明します。
 
-### Prerequisites
+### 前提条件
 
-Make sure that you meet the following requirements.
+次の要件を満たしていることを確認してください。
 
-- [Visual Studio IDE](https://visualstudio.microsoft.com/downloads/) for Windows
-- [Copilot Extension for Visual Studio IDE](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot). 
+* 以下の拡張機能を導入済みの [Visual Studio Code](https://code.visualstudio.com/download)
+  * `GitHub.copilot`
+  * `GitHub.copilot-chat`
+  * `ms-dotnettools.csharp`
+  * `ms-dotnettools.vscode-dotnet-runtime`
+* .NET SDK 8.0 ※要確認※
 
-[See this documentation on how to install Copilot extension for Visual Studio IDE](./CopilotExtensionVS)
+### Step 1: Visual Studio Code を起動
 
-### Step 1: Launch Visual Studio IDE
+※ワークディレクトリはどうする？
+※※いろんな意味で Codespaces に寄せちゃう方がよい気がする
 
-Make sure that you followed all prerequisites and installed Visual Studio IDE and Copilot extension for Visual Studio IDE.
+### Step 2: ソリューションおよびプロジェクトの作成
 
-Search for **Visual Studio** after clicking Windows button.
+Visual Studio Code でターミナルを起動し、以下のコマンドを実行して新規のソリューションを作成します。
 
-![Search Visual Studio IDE](./Demos/images/0_SearchVS.jpg)
-
-Then, your Visual Studio IDE will be launching.
-
-![Launch Visual Studio IDE](./Demos/images/1_VSLaunching.jpg)
-
-### Step 2: Create a new project
-
-Once Visual Studio IDE is launched, you will see the following screen. Although you can use an existig project, let's try to create a new project by selecting **Create a new project**.
-
-![Create a new project](./Demos/images/2_CreateProject.jpg)
-
-Then, you will see different options. Select **Console App (.NET Framework)** and click **Next**.
-
-![Select Console App (.NET Framework)](./Demos/images/3_ConsoleApp.jpg)
-
-Then, you will see the following screen. Enter **HelloCopilot** as the project name and click **Create**.
-
-![Enter project name](./Demos/images/4_ProjectName.jpg)
-
-You will see a progress bar while Visual Studio IDE is creating a new project.
-
-![Creating a new project](./Demos/images/5_CreateProject.jpg)
-
-### Step 3: Check Copilot is enabled
-
-Let's make sure that Copilot is enabled. On bottom, you should see **Auth Status: OK** under **Output** window. Make sure to select **GitHub Copilot** from the dropdown.
-
-![Check Copilot is enabled](./Demos/images/6_VSCodeStatus.jpg)
-
-And you should also see a Copilot icon above the **Output** window.
-
-![Copilot icon](./Demos/images/7_CopilotLogo.jpg)
-
-### Step 4: Write a simple code
-
-Let's start writing some simple code first. Inside your **Main** method, create a following comment after `//`
-
-```csharp
-// Print out Hello, Copilot 3,000 time with incrementing index
+```Shell
+dotnet new sln
 ```
 
-![Write a simple code](./Demos/images/8_FirstCode.jpg)
+以下が出力されれば OK です。
 
-As soon as you enter next line, you should see that Copilot is suggesting you to write a code. 
-
-![Copilot suggestion](./Demos/images/9_CopilotSuggestion.jpg)
-
-Select the first suggestion by hitting **Tab** button.
-
-![Select Copilot suggestion](./Demos/images/10_Complete.jpg)
-
-By the way, since this is a Console App, it will be a good idea to add the following line at the end of your **Main** method.
-
-```csharp
-Console.ReadLine();
+```Shell
+The template "Solution File" was created successfully.
 ```
 
-This can helps to keep the console window open after the program is finished.
+続いて以下のコマンドを実行して新規コンソールアプリケーションのプロジェクトを作成します。
 
-![Add Console.ReadLine()](./Demos/images/11_AddReadline.jpg)
-
-Your file should look like this.
-
-![Final code](./Demos/images/12_Readline.jpg)
-
-That is it for writing a very simple code using Copilot. We can run this code by clicking **Start** button on top, but let's actually write a function.
-
-### Step 5: Write a function
-
-We will add a function above the **Main** method. Let's add a following comment as a block comment.
-
-```csharp
-/*
- * Function to sum all the numbers in a list of integers
- */
+```Shell
+dotnet new console -o HelloCopilot
 ```
 
-![Write a function](./Demos/images/13_AddFunction.jpg)
+以下が出力されれば OK です。
 
-Again, when you enter, it should show you a suggestion. Yours might look different frome mine, though.
+```Shell
+The template "Console App" was created successfully.
 
-![Function suggestion](./Demos/images/14_FunctionSuggestion.jpg)
-
-Hit **Tab** button to select the first suggestion. Your code might look like this.
-
-![Function code](./Demos/images/15_CompleteCode.jpg)
-
-Let's proceed to add codes to run that within main function. In the Main method, start clicking anywhere and click **Enter** button to see suggestions made by Copilot.
-
-![Main method](./Demos/images/16_CreateList.jpg)
-
-You can keep hit **Enter** and **Tab** buttons to take suggestions, but make sure that you can stop once you are happy with the result or fix if needed.
-
-![Print](./Demos/images/17_Print.jpg)
-
-### Step 6: Run the code
-
-Now, let's run the code. Click **Start** button on top.
-
-![Run the code](./Demos/images/18_Start.jpg)
-
-If there is a drop down, click **Start** again.
-
-![Run the code](./Demos/images/19_Start.jpg)
-
-Then, you will a console window with the following output.
-
-![Run the code](./Demos/images/20_ConfirmResult.jpg)
-
-### Step 7: Add more complicated function
-
-Let's add little more complicated function. Add a following comment as a block comment.
-
-```csharp
-/*
- * Function to randomly assign 4 digit codes to N x M matrix representing lockers
- */
+Processing post-creation actions...
+Restoring /workspaces/CopilotTraining/HelloCopilot/HelloCopilot.csproj:
+  Determining projects to restore...
+  Restored /workspaces/CopilotTraining/HelloCopilot/HelloCopilot.csproj (in 78 ms).
+Restore succeeded.
 ```
 
-![Add more complicated function](./Demos/images/21_AddMatrix.jpg)
+作成したアプリケーションをソリューションに追加します。以下のコマンドを実行してください。
 
-Going back to Main function again, start hitting **Enter** and **Tab** buttons to take suggestions.
+```Shell
+dotnet sln add HelloCopilot/HelloCopilot.csproj
+```
 
-![Add main](./Demos/images/22_AddMain.jpg)
+以下が出力されれば OK です。
 
-Sometime, you might need to enter more details result to correct.
+```Shell
+Project `HelloCopilot/HelloCopilot.csproj` added to the solution.
+```
 
-![Complete](./Demos/images/23_Completed.jpg)
+Visual Studio Code で開いているディレクトリ内が以下のようになっていることを確認して次へ進みます。
 
-Sometimes, you might encounter an error like this.
+```Shell
+※ tree コマンドの実行結果を貼る or スクショ貼る
+├── .devcontainer
+    └── devcontainer.json
+├── CopilotTraining.sln
+└── HelloCopilot
+    ├── HelloCopilot.csproj
+    └── Program.cs
+```
 
-![Error](./Demos/images/24_PossibleError.jpg)
+### Step 3: GitHub Copilot の状態を確認
 
-Although you may not get an exactly same result, this example has a problem with index because it was using `i` as an index for both `for` loops. Let's fix that by changing the second `for` loop to use `j` instead of `i`.
+Visual Studio Code ウィンドウの右下にある GitHub Copilot のアイコンを押下してください。
 
-![Fix](./Demos/images/25_FixError.jpg)
+※スクショ貼る※
 
-Remember. Copilot is not perfect, and it can make some dumb mistakes. You might need to fix the code to make it work. You are the main pilot, and Copilot is your assistance.
+`Status: Ready` となっていれば OK です。次へ進みます。
 
-Your final result when you run the code again might look like this.
+※なっていない場合の対処を書く※
 
-![Final result](./Demos/images/26_FinalResult.jpg)
+### Step 4: 最初のコードを記述
 
-That is it! Congratulation on finishing your first exercise with Copilot. You can try to write more complicated code and see how Copilot can help you.
+`HelloCopilot/Program.cs` を開きます。
 
-## 🤝 Contributing
-Contributions are warmly welcomed! ✨
+初期状態のコードを全て削除し、以下を記述してください。
 
-To contribute to a public exercise, please refer to our contribution guidelines [here](https://github.com/ps-copilot-sandbox/.github/blob/main/.github/CONTRIBUTING.md).
+```C#
+using System;
+using
+```
 
-To create a net new exercise, please use [this repository template](https://github.com/ps-copilot-sandbox/copilot-exercise-template).
+2 行目の `using` を記述すると GitHub Copilot がサジェストをしてくれます。
+
+※スクショ貼る※
+
+Tab キーを押下してサジェストを受け入れましょう。
+
+```C#
+using System;
+using System.Collections.Generic;
+```
+
+受け入れたあとに改行をすると `using System.Linq` がサジェストされるのでこれも受け入れます。
+
+※スクショ貼る※
+
+最終的に以下の形になるまでサジェストを受け入れ続けてください。
+
+```C#
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+```
+
+続いて以下のコードをコピーして最下行に貼り付けてください。
+
+```C#
+namespace HelloCopilot
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //
+        }
+    }
+}
+```
+
+`Main` メソッド内のコメント部分に以下のいずれかを追記してください。  
+※以降のサンプルでは日本語で追記したものを記載します
+
+* 英語
+  * `Print out Hello, Copilot 3,000 time with incrementing index.`
+* 日本語
+  * `Hello, Copilot {index} を 3000 回出力する`
+
+```C#
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HelloCopilot
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            // Hello, Copilot {index} を 3000 回出力する
+        }
+    }
+}
+```
+
+入力を完了して改行すると Copilot からコードがサジェストされるので受け入れましょう。
+
+※スクショ貼る※
+
+ここまででコードは以下のようになります。必ずしも全く同じコードになるわけではありませんが、概ね同じようなコードになっていると思います。
+
+```C#
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HelloCopilot
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            // Hello, Copilot {index} を 3000 回出力する
+            for (int i = 0; i < 3000; i++)
+            {
+                Console.WriteLine($"Hello, Copilot {i}");
+            }
+        }
+    }
+}
+```
+
+意図した通りの内容になっているか、実行して確認してみましょう。ターミナルから以下のコマンドを実行してください。
+
+```Shell
+dotnet run --project HelloCopilot/HelloCopilot.csproj
+```
+
+以下が出力されれば OK です。
+
+```Shell
+Hello, Copilot 0
+Hello, Copilot 1
+Hello, Copilot 2
+.
+.
+.
+Hello, Copilot 2997
+Hello, Copilot 2998
+Hello, Copilot 2999
+```
+
+### Step 5: 関数の記述
+
+続いて関数の記述をさせてみましょう。`Program` クラスにメソッドとして追加します。`Main` メソッドの上に以下のコメントを記述してください。
+
+* 英語
+  * `Function to sum all the numbers in a list of integers.`
+* 日本語
+  * `Int の配列を受け取り中身を合計して返す関数`
+
+以下のようなサジェストが表示されるので受け入れてください。
+
+```C#
+.
+.
+.
+        // Int の配列を受け取り中身を合計して返す関数
+        private static int Sum(int[] numbers)
+        {
+            int sum = 0;
+            foreach (var number in numbers)
+            {
+                sum += number;
+            }
+            return sum;
+        }
+.
+.
+.
+```
+
+`Main` メソッド内に追加したメソッドを実行するコードを追記します。`Main` メソッド内の最下行をクリックして Enter を押下し改行すると、Copilot からのサジェストが表示されます。サジェストを受け入れた後改行するとさらなるサジェストが表示されるので、満足いく結果が得られそうなコードになるまで繰り返してください。
+
+```C#
+.
+.
+.
+        static void Main(string[] args)
+        {
+            // Hello, Copilot {index} を 3000 回出力する
+            for (int i = 0; i < 3000; i++)
+            {
+                Console.WriteLine($"Hello, Copilot {i}");
+            }
+
+            /* 以下は Copilot がサジェストしたコメント (以降のコードは全てサジェスト受け入れを繰り返したもの) */
+            // 1 から 10 までの数字を配列に格納
+            int[] numbers = new int[10];
+            for (int i = 0; i < 10; i++)
+            {
+                numbers[i] = i + 1;
+            }
+
+            // 配列の中身を合計して出力
+            Console.WriteLine(Sum(numbers));
+        }
+.
+.
+.
+```
+
+一通り受け入れが終わって実行可能な形になっていそうであればコードを実行してみましょう。ターミナルから以下のコマンドを実行してください。
+
+```Shell
+dotnet run --project HelloCopilot/HelloCopilot.csproj
+```
+
+サンプルコードの場合、実行結果は以下のようになります。
+
+```C#
+Hello, Copilot 0
+Hello, Copilot 1
+Hello, Copilot 2
+.
+.
+.
+Hello, Copilot 2997
+Hello, Copilot 2998
+Hello, Copilot 2999
+55
+```
+
+### Step 6: より複雑な機能を追加
+
+`Program` クラスにもう少し複雑な機能を持った関数を追加させてみましょう。`Main` メソッドの上に以下のコメントを記述してください。
+
+* 英語
+  * `Function to randomly assign 4 digit codes to N x M matrix representing lockers`
+* 日本語
+  * `ロッカー番号として、4 桁のランダムな数字を N x M 列生成する機能`
+
+以下のようなサジェストが表示されるので受け入れてください。
+
+```C#
+.
+.
+.
+        // ロッカー番号として、4 桁のランダムな数字を N x M 列生成する機能
+        private static void GenerateLockerNumbers(int n, int m)
+        {
+            Random random = new Random();
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < m; j++)
+                {
+                    Console.Write(random.Next(1000, 10000));
+                    if (j != m - 1)
+                    {
+                        Console.Write(", ");
+                    }
+                }
+                Console.WriteLine();
+            }
+        }
+.
+.
+.
+```
+
+`Main` メソッド内に追加したメソッドを実行するコードを追記します。[先程](#Step-5:-関数の記述) と同じ手順で行ってください。
+
+```C#
+.
+.
+.
+        static void Main(string[] args)
+        {
+            // Hello, Copilot {index} を 3000 回出力する
+            for (int i = 0; i < 3000; i++)
+            {
+                Console.WriteLine($"Hello, Copilot {i}");
+            }
+
+            // 1 から 10 までの数字を配列に格納
+            int[] numbers = new int[10];
+            for (int i = 0; i < 10; i++)
+            {
+                numbers[i] = i + 1;
+            }
+
+            // 配列の中身を合計して出力
+            Console.WriteLine(Sum(numbers));
+
+            /* 新しく追記した部分 */
+            // 3 x 5 列のロッカー番号を生成して出力 
+            GenerateLockerNumbers(3, 5);
+        }
+.
+.
+.
+```
+
+追記が完了したらコードを実行しましょう。ターミナルから以下のコマンドを実行してください。
+
+```Shell
+dotnet run --project HelloCopilot/HelloCopilot.csproj
+```
+
+サンプルコードの場合、実行結果は以下のようになります。
+
+```Shell
+Hello, Copilot 0
+Hello, Copilot 1
+Hello, Copilot 2
+.
+.
+.
+Hello, Copilot 2999
+55
+2807, 1062, 7433, 5027, 7251
+2970, 1526, 2614, 2746, 7719
+5619, 7298, 8802, 7344, 3956
+```
+
+### Step 7: メソッドのテストを追加
+
+Copilot Chat を用いて、これまでに作成したメソッドのテストコードを記述しましょう。まずはテストを実行するための環境を準備します。
+
+最初にテスト用のプロジェクトを作成します。ターミナルから以下のコマンドを実行してください。
+
+```Shell
+dotnet new mstest -o HelloCopilotTest
+```
+
+以下が出力されれば OK です。
+
+```Shell
+The template "MSTest Test Project" was created successfully.
+
+Processing post-creation actions...
+Restoring /workspaces/CopilotTraining/HelloCopilotTest/HelloCopilotTest.csproj:
+  Determining projects to restore...
+  Restored /workspaces/CopilotTraining/HelloCopilotTest/HelloCopilotTest.csproj (in 539 ms).
+Restore succeeded.
+```
+
+作成したプロジェクトをソリューションへ追加します。ターミナルから以下のコマンドを実行してください。
+
+```Shell
+dotnet sln add HelloCopilotTest/HelloCopilotTest.csproj
+```
+
+以下が出力されれば OK です。
+
+```Shell
+Project `HelloCopilotTest/HelloCopilotTest.csproj` added to the solution.
+```
+
+テスト用プロジェクトからテスト対象のアプリケーションプロジェクトに対するプロジェクト参照を追加します。ターミナルから以下のコマンドを実行してください。
+
+```Shell
+dotnet add HelloCopilotTest/HelloCopilotTest.csproj reference HelloCopilot/HelloCopilot.csproj
+```
+
+以下が出力されれば OK です。
+
+```Shell
+Reference `..\HelloCopilot\HelloCopilot.csproj` added to the project.
+```
+
+Copilot Chat にテストコードの生成を依頼してみましょう。VS Code のウィンドウ左にあるバーから Copilot Chat を開き、以下の文で問いかけてください。
+
+```
+Program クラス内にある Sum メソッドと GenerateLockerNumbers メソッドのテストを実行するコードを生成してください。
+
+テストツールは MSTest を利用します。
+```
+
+サンプルではテストコードに加え、テストプロジェクトの準備や実行方法も回答してくれました。以下は生成されたテストコードのみを抜粋しています。
+
+```C#
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.IO;
+
+namespace HelloCopilot.Tests
+{
+    [TestClass]
+    public class ProgramTests
+    {
+        [TestMethod]
+        public void TestSum()
+        {
+            int[] array = { 1, 2, 3, 4, 5 };
+            int result = HelloCopilot.Program.Sum(array);
+            Assert.AreEqual(15, result);
+        }
+
+        [TestMethod]
+        public void TestGenerateLockerNumbers()
+        {
+            using (StringWriter sw = new StringWriter())
+            {
+                Console.SetOut(sw);
+                HelloCopilot.Program.GenerateLockerNumbers(2, 3);
+                string result = sw.ToString().Trim();
+                string[] numbers = result.Split(new[] { ", " }, StringSplitOptions.None);
+                Assert.AreEqual(6, numbers.Length);
+                foreach (string number in numbers)
+                {
+                    Assert.IsTrue(int.TryParse(number, out int n));
+                    Assert.IsTrue(n >= 1000 && n < 10000);
+                }
+            }
+        }
+    }
+}
+```
+
+生成されたテストコードを準備しておいたテストプロジェクト内に記述します。`HelloCopilotTest/UnitTest1.cs` を開いて生成されたコードを貼り付けて下さい。
+
+完了したらテストを実行してみましょう。ターミナルから以下のコマンドを実行してください。
+
+```Shell
+dotnet test
+```
+
+以下のようなエラーが発生します。
+
+```Shell
+  Determining projects to restore...
+  Restored /workspaces/CopilotTraining/HelloCopilotTest/HelloCopilotTest.csproj (in 301 ms).
+  1 of 2 projects are up-to-date for restore.
+  HelloCopilot -> /workspaces/CopilotTraining/HelloCopilot/bin/Debug/net8.0/HelloCopilot.dll
+/workspaces/CopilotTraining/HelloCopilotTest/UnitTest1.cs(14,39): error CS0122: 'Program' is inaccessible due to its protection level [/workspaces/CopilotTraining/HelloCopilotTest/HelloCopilotTest.csproj]
+/workspaces/CopilotTraining/HelloCopilotTest/UnitTest1.cs(24,30): error CS0122: 'Program' is inaccessible due to its protection level [/workspaces/CopilotTraining/HelloCopilotTest/HelloCopilotTest.csproj]
+```
+
+Copilot Chat にエラーの原因を尋ねてみましょう。Copilot Chat に以下の文で問いかけてください。
+
+```
+error CS0122: 'Program' is inaccessible due to its protection level
+
+上記のエラーが発生します。原因は何ですか？
+```
+
+原因と対処について回答してくれます。サンプルでは以下のように回答してくれました。
+
+---
+エラーの原因は、`Program` クラスが `internal` 修飾子で定義されているため、テストプロジェクトからアクセスできないことです。テストプロジェクトからアクセスできるようにするためには、`Program` クラスを `public` に変更する必要があります。
+
+**修正手順**
+
+1. `Program` クラスのアクセス修飾子を `internal` から `public` に変更します。
+
+**修正後のコード**
+
+```C#
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HelloCopilot
+{
+    public class Program
+    {
+        // Int の配列を受け取り中身を合計して返す関数
+        private static int Sum(int[] array)
+        {
+            int sum = 0;
+            foreach (int i in array)
+            {
+                sum += i;
+            }
+            return sum;
+        }
+
+        // ロッカー番号として、4 桁のランダムな数字を N x M 列生成する機能
+        private static void GenerateLockerNumbers(int N, int M)
+        {
+            Random random = new Random();
+            for (int i = 0; i < N; i++)
+            {
+                for (int j = 0; j < M; j++)
+                {
+                    Console.Write(random.Next(1000, 10000));
+                    if (j < M - 1)
+                    {
+                        Console.Write(", ");
+                    }
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
+```
+
+これで、テストプロジェクトから `Program` クラスにアクセスできるようになります。再度テストを実行してみてください。
+
+---
+
+上記の通り対応してみましょう。`HelloCopilot/Program.cs` を開き、修飾子を修正したあとに再度テストを実行します。ターミナルから以下のコマンドを実行してください。
+
+```Shell
+dotnet test
+```
+
+今度は以下のようなエラーが出力されます。
+
+```Shell
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  HelloCopilot -> /workspaces/CopilotTraining/HelloCopilot/bin/Debug/net8.0/HelloCopilot.dll
+/workspaces/CopilotTraining/HelloCopilotTest/UnitTest1.cs(14,47): error CS0117: 'Program' does not contain a definition for 'Sum' [/workspaces/CopilotTraining/HelloCopilotTest/HelloCopilotTest.csproj]
+/workspaces/CopilotTraining/HelloCopilotTest/UnitTest1.cs(24,38): error CS0117: 'Program' does not contain a definition for 'GenerateLockerNumbers' [/workspaces/CopilotTraining/HelloCopilotTest/HelloCopilotTest.csproj]
+```
+
+どうやら先程の対応では不十分だったようです。Copilot や Copilot Chat は必ず完全な回答を返してくれるわけではありません。何度かやり取りを繰り返してテストを完遂してみましょう。サンプルでは最終的に以下のコードになりました。
+
+```C#
+// HelloCopilot/Program.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HelloCopilot
+{
+    public class Program
+    {
+
+        // Int の配列を受け取り中身を合計して返す関数
+        public static int Sum(int[] array)
+        {
+            int sum = 0;
+            foreach (int i in array)
+            {
+                sum += i;
+            }
+            return sum;
+        }
+
+        // ロッカー番号として、4 桁のランダムな数字を N x M 列生成する機能
+        public static void GenerateLockerNumbers(int N, int M)
+        {
+            Random random = new Random();
+            for (int i = 0; i < N; i++)
+            {
+                for (int j = 0; j < M; j++)
+                {
+                    Console.Write(random.Next(1000, 10000));
+                    if (j < M - 1)
+                    {
+                        Console.Write(", ");
+                    }
+                }
+                Console.WriteLine();
+            }
+        }
+
+        static void Main(string[] args)
+        {
+            // Hello, Copilot {index} を 3000 回出力する
+            for (int i = 0; i < 3000; i++)
+            {
+                Console.WriteLine($"Hello, Copilot {i}");
+            }
+
+            // 1 から 10 までの数値を持つ配列を作成
+            int[] array = new int[10];
+            for (int i = 0; i < 10; i++)
+            {
+                array[i] = i + 1;
+            }
+
+            // 配列の中身を合計して出力
+            Console.WriteLine(Sum(array));
+
+            // 5 x 5 列のロッカー番号を生成して出力
+            GenerateLockerNumbers(5, 5);
+        }
+    }
+}
+```
+
+```C#
+// HelloCopilotTest/UnitTest1.cs
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.IO;
+
+namespace HelloCopilot.Tests
+{
+    [TestClass]
+    public class ProgramTests
+    {
+        [TestMethod]
+        public void TestSum()
+        {
+            int[] array = { 1, 2, 3, 4, 5 };
+            int result = HelloCopilot.Program.Sum(array);
+            Assert.AreEqual(15, result);
+        }
+
+        [TestMethod]
+        public void TestGenerateLockerNumbers()
+        {
+            using (StringWriter sw = new StringWriter())
+            {
+                Console.SetOut(sw);
+                HelloCopilot.Program.GenerateLockerNumbers(2, 3);
+                string result = sw.ToString().Trim();
+                string[] lines = result.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+                Assert.AreEqual(2, lines.Length); // 2行の出力があるはず
+                foreach (string line in lines)
+                {
+                    string[] numbers = line.Split(new[] { ", " }, StringSplitOptions.None);
+                    Assert.AreEqual(3, numbers.Length); // 各行に3つの数字があるはず
+                    foreach (string number in numbers)
+                    {
+                        Assert.IsTrue(int.TryParse(number, out int n));
+                        Assert.IsTrue(n >= 1000 && n < 10000);
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+```Shell
+# 実行結果
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  HelloCopilot -> /workspaces/CopilotTraining/HelloCopilot/bin/Debug/net8.0/HelloCopilot.dll
+  HelloCopilotTest -> /workspaces/CopilotTraining/HelloCopilotTest/bin/Debug/net8.0/HelloCopilotTest.dll
+Test run for /workspaces/CopilotTraining/HelloCopilotTest/bin/Debug/net8.0/HelloCopilotTest.dll (.NETCoreApp,Version=v8.0)
+VSTest version 17.11.0 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     2, Skipped:     0, Total:     2, Duration: 19 ms - HelloCopilotTest.dll (net8.0)
+```
+
+以上でワークショップは終了です。
