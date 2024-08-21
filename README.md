@@ -16,24 +16,53 @@
 
 - [Visual Studio Code](https://code.visualstudio.com/download)
 
+## 📖 GitHub Copilot チートシート
+
+GitHub Copilot の使い方については、以下のチートシートを参照してください。
+| 内容 | 操作方法 |
+| --- | --- |
+| 1 行全ての提案を受け入れる | `Tab` キー |
+| 提案をスペースごとに受け入れる | `Ctrl` + `→` キー |
+| 提案を削除する | `Ctrl` + `←` キー |
+| 提案を拒否する | `Esc` キー |
+| 次の提案を表示する | `Alt` + `]` キー |
+| 前の提案を表示する | `Alt` + `[` キー |
+| 提案をまとめて表示する | `Ctrl` + `Enter` キー |
+
+# GitHub Copilot Chat チートシート
+GitHub Copilot Chat の使い方については、以下のチートシートを参照してください。
+| 内容 | 操作方法 | Chat Window | Inline Chat |
+| --- | --- | --- | --- |
+| コードの内容を解説させる | /explain | 〇| 〇|
+| 修正を提案させる | /fix | 〇| 〇|
+| テストコードを提案させる | /tests | 〇| 〇|
+| チャットの履歴を消去し、新たな会話を開始する | /clear | 〇| × |
+| 使い方を表示する | /help | 〇| 〇|
+
+※GitHub Copilot Chat 画面では `Shift` + `Enter` キーで改行が可能です
+
 ## 🗒️ ガイド
 
-このガイドでは Visual Studio Code で Copilot を利用する手順を説明します。
+このガイドでは Visual Studio Code で GitHub Copilot を利用する手順を説明します。
 
 ### 前提条件
 
 次の要件を満たしていることを確認してください。
 
 * 以下の拡張機能を導入済みの [Visual Studio Code](https://code.visualstudio.com/download)
-  * `GitHub.copilot`
-  * `GitHub.copilot-chat`
-  * `ms-dotnettools.csharp`
-  * `ms-dotnettools.vscode-dotnet-runtime`
-* .NET SDK 8.0
+  * GitHub Copilot (`GitHub.copilot`)
+  * GitHub Copilot Chat (`GitHub.copilot-chat`)
+  * C# (`ms-dotnettools.csharp`)
+  * .NET Install Tool (`ms-dotnettools.vscode-dotnet-runtime`)
+* [.NET SDK 8.0](https://dotnet.microsoft.com/ja-jp/download)
 
 ### Step 1: Visual Studio Code を起動
 
 任意の場所に本ワークショップ用のディレクトリ (e.g. `CopilotTraining`) を作成し、Visual Studio Code で当該ディレクトリを開いてください。
+
+※GitHub Codespaces で受講される方 (普段 Visual Studio Code を利用されていない方) は当リポジトリから GitHub Codespaces を起動してください。
+
+![GitHub Codespaces 起動](./images/00_Codespaces_Run.png)
 
 ### Step 2: ソリューションおよびプロジェクトの作成
 
@@ -124,6 +153,8 @@ using System.Text;
 using System.Threading.Tasks;
 ```
 
+<u>**※全てこの通りに行かない場合があります。その場合は上記のコードをコピーして貼り付けてください※**</u>
+
 続いて以下のコードをコピーして最下行に貼り付けてください。
 
 ```C#
@@ -166,7 +197,7 @@ namespace HelloCopilot
 }
 ```
 
-入力を完了して改行すると Copilot からコードがサジェストされるので受け入れましょう。
+入力を完了して改行すると GitHub Copilot からコードがサジェストされるので受け入れましょう。
 
 ![Copilot-Suggest-03](./images/05_Copilot_Suggest_03.png)
 
@@ -195,7 +226,7 @@ namespace HelloCopilot
 }
 ```
 
-意図した通りの内容になっているか、実行して確認してみましょう。ターミナルから以下のコマンドを実行してください。
+意図した通りの内容になっているか、実行して確認してみましょう。コードの変更を保存し、ターミナルから以下のコマンドを実行してください。
 
 ```Shell
 dotnet run --project HelloCopilot/HelloCopilot.csproj
@@ -245,7 +276,7 @@ Hello, Copilot 2999
 .
 ```
 
-`Main` メソッド内に追加したメソッドを実行するコードを追記します。`Main` メソッド内の最下行をクリックして Enter を押下し改行すると、Copilot からのサジェストが表示されます。サジェストを受け入れた後改行するとさらなるサジェストが表示されるので、満足いく結果が得られそうなコードになるまで繰り返してください。
+`Main` メソッド内に追加したメソッドを実行するコードを追記します。`Main` メソッド内の最下行をクリックして Enter を押下し改行すると、GitHub Copilot からのサジェストが表示されます。サジェストを受け入れた後改行するとさらなるサジェストが表示されるので、満足いく結果が得られそうなコードになるまで繰り返してください。
 
 ```C#
 .
@@ -259,7 +290,7 @@ Hello, Copilot 2999
                 Console.WriteLine($"Hello, Copilot {i}");
             }
 
-            /* 以下は Copilot がサジェストしたコメント (以降のコードは全てサジェスト受け入れを繰り返したもの) */
+            /* 以下は GitHub Copilot がサジェストしたコメント (以降のコードは全てサジェスト受け入れを繰り返したもの) */
             // 1 から 10 までの数字を配列に格納
             int[] numbers = new int[10];
             for (int i = 0; i < 10; i++)
@@ -275,7 +306,7 @@ Hello, Copilot 2999
 .
 ```
 
-一通り受け入れが終わって実行可能な形になっていそうであればコードを実行してみましょう。ターミナルから以下のコマンドを実行してください。
+一通り受け入れが終わって実行可能な形になっていそうであればコードを実行してみましょう。コードの変更を保存し、ターミナルから以下のコマンドを実行してください。
 
 ```Shell
 dotnet run --project HelloCopilot/HelloCopilot.csproj
@@ -301,9 +332,9 @@ Hello, Copilot 2999
 `Program` クラスにもう少し複雑な機能を持った関数を追加させてみましょう。`Main` メソッドの上に以下のコメントを記述してください。
 
 * 英語
-  * `Function to randomly assign 4 digit codes to N x M matrix representing lockers`
+  * `Function to randomly assign 4 digit codes to N x M matrix.`
 * 日本語
-  * `ロッカー番号として、4 桁のランダムな数字を N x M 列生成する機能`
+  * `4 桁のランダムな数字を N x M 列生成する機能`
 
 以下のようなサジェストが表示されるので受け入れてください。
 
@@ -366,7 +397,7 @@ Hello, Copilot 2999
 .
 ```
 
-追記が完了したらコードを実行しましょう。ターミナルから以下のコマンドを実行してください。
+追記が完了したらコードを実行しましょう。コードの変更を保存し、ターミナルから以下のコマンドを実行してください。
 
 ```Shell
 dotnet run --project HelloCopilot/HelloCopilot.csproj
@@ -390,7 +421,7 @@ Hello, Copilot 2999
 
 ### Step 7: メソッドのテストを追加
 
-Copilot Chat を用いて、これまでに作成したメソッドのテストコードを記述しましょう。まずはテストを実行するための環境を準備します。
+GitHub Copilot Chat を用いて、これまでに作成したメソッドのテストコードを記述しましょう。まずはテストを実行するための環境を準備します。
 
 最初にテスト用のプロジェクトを作成します。ターミナルから以下のコマンドを実行してください。
 
@@ -434,7 +465,9 @@ dotnet add HelloCopilotTest/HelloCopilotTest.csproj reference HelloCopilot/Hello
 Reference `..\HelloCopilot\HelloCopilot.csproj` added to the project.
 ```
 
-Copilot Chat にテストコードの生成を依頼してみましょう。Visual Studio Code のウィンドウ左にあるバーから Copilot Chat を開き、以下の文で問いかけてください。
+GitHub Copilot Chat にテストコードの生成を依頼してみましょう。Visual Studio Code のウィンドウ左にあるバーから GitHub Copilot Chat を開き、以下の文で問いかけてください。
+
+![GitHub Copilot Chat](./images/06_Copilot_Chat.png)
 
 ```
 Program クラス内にある Sum メソッドと GenerateLockerNumbers メソッドのテストを実行するコードを生成してください。
@@ -485,7 +518,7 @@ namespace HelloCopilot.Tests
 
 生成されたテストコードを準備しておいたテストプロジェクト内に記述します。`HelloCopilotTest/UnitTest1.cs` を開いて生成されたコードを貼り付けて下さい。
 
-完了したらテストを実行してみましょう。ターミナルから以下のコマンドを実行してください。
+完了したらテストを実行してみましょう。コードの変更を保存し、ターミナルから以下のコマンドを実行してください。
 
 ```Shell
 dotnet test
@@ -502,7 +535,7 @@ dotnet test
 /workspaces/CopilotTraining/HelloCopilotTest/UnitTest1.cs(24,30): error CS0122: 'Program' is inaccessible due to its protection level [/workspaces/CopilotTraining/HelloCopilotTest/HelloCopilotTest.csproj]
 ```
 
-Copilot Chat にエラーの原因を尋ねてみましょう。Copilot Chat に以下の文で問いかけてください。
+GitHub Copilot Chat にエラーの原因を尋ねてみましょう。GitHub Copilot Chat に以下の文で問いかけてください。
 
 ```
 error CS0122: 'Program' is inaccessible due to its protection level
@@ -568,7 +601,7 @@ namespace HelloCopilot
 
 ---
 
-上記の通り対応してみましょう。`HelloCopilot/Program.cs` を開き、修飾子を修正したあとに再度テストを実行します。ターミナルから以下のコマンドを実行してください。
+上記の通り対応してみましょう。`HelloCopilot/Program.cs` を開き、修飾子を修正したあとに再度テストを実行します。コードの変更を保存し、ターミナルから以下のコマンドを実行してください。
 
 ```Shell
 dotnet test
@@ -584,7 +617,7 @@ dotnet test
 /workspaces/CopilotTraining/HelloCopilotTest/UnitTest1.cs(24,38): error CS0117: 'Program' does not contain a definition for 'GenerateLockerNumbers' [/workspaces/CopilotTraining/HelloCopilotTest/HelloCopilotTest.csproj]
 ```
 
-どうやら先程の対応では不十分だったようです。Copilot や Copilot Chat は必ず完全な回答を返してくれるわけではありません。何度かやり取りを繰り返してテストを完遂してみましょう。サンプルでは最終的に以下のコードになりました。
+どうやら先程の対応では不十分だったようです。GitHub Copilot や GitHub Copilot Chat は必ず完全な回答を返してくれるわけではありません。何度かやり取りを繰り返してテストを完遂してみましょう。サンプルでは最終的に以下のコードになりました。
 
 ```C#
 // HelloCopilot/Program.cs
