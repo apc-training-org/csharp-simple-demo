@@ -29,15 +29,15 @@ GitHub Copilot の使い方については、以下のチートシートを参�
 | 前の提案を表示する | `Alt` + `[` キー |
 | 提案をまとめて表示する | `Ctrl` + `Enter` キー |
 
-# GitHub Copilot Chat チートシート
+## 📖 GitHub Copilot Chat チートシート
 GitHub Copilot Chat の使い方については、以下のチートシートを参照してください。
 | 内容 | 操作方法 | Chat Window | Inline Chat |
 | --- | --- | --- | --- |
-| コードの内容を解説させる | /explain | 〇| 〇|
-| 修正を提案させる | /fix | 〇| 〇|
-| テストコードを提案させる | /tests | 〇| 〇|
-| チャットの履歴を消去し、新たな会話を開始する | /clear | 〇| × |
-| 使い方を表示する | /help | 〇| 〇|
+| コードの内容を解説させる | `/explain` | 〇| 〇|
+| 修正を提案させる | `/fix` | 〇| 〇|
+| テストコードを提案させる | `/tests` | 〇| 〇|
+| チャットの履歴を消去し、新たな会話を開始する | `/clear` | 〇| × |
+| 使い方を表示する | `/help` | 〇| 〇|
 
 ※GitHub Copilot Chat 画面では `Shift` + `Enter` キーで改行が可能です
 
@@ -153,7 +153,7 @@ using System.Text;
 using System.Threading.Tasks;
 ```
 
-<u>**※全てこの通りに行かない場合があります。その場合は上記のコードをコピーして貼り付けてください※**</u>
+**※全てこの通りに行かない場合があります。その場合は上記のコードをコピーして貼り付けてください※**
 
 続いて以下のコードをコピーして最下行に貼り付けてください。
 
@@ -251,9 +251,9 @@ Hello, Copilot 2999
 続いて関数の記述をさせてみましょう。`Program` クラスにメソッドとして追加します。`Main` メソッドの上に以下のコメントを記述してください。
 
 * 英語
-  * `Function to sum all the numbers in a list of integers.`
+  * `// Function to sum all the numbers in a list of integers.`
 * 日本語
-  * `Int の配列を受け取り中身を合計して返す関数`
+  * `// Int の配列を受け取り中身を合計して返す関数`
 
 以下のようなサジェストが表示されるので受け入れてください。
 
@@ -290,16 +290,12 @@ Hello, Copilot 2999
                 Console.WriteLine($"Hello, Copilot {i}");
             }
 
-            /* 以下は GitHub Copilot がサジェストしたコメント (以降のコードは全てサジェスト受け入れを繰り返したもの) */
-            // 1 から 10 までの数字を配列に格納
-            int[] numbers = new int[10];
-            for (int i = 0; i < 10; i++)
-            {
-                numbers[i] = i + 1;
-            }
+            // 1 から 100 までの数値を持つ配列を作成
+            int[] numbers = Enumerable.Range(1, 100).ToArray();
 
-            // 配列の中身を合計して出力
-            Console.WriteLine(Sum(numbers));
+            // 配列の中身を合計
+            int sum = Sum(numbers);
+            Console.WriteLine($"Sum: {sum}");
         }
 .
 .
@@ -324,7 +320,7 @@ Hello, Copilot 2
 Hello, Copilot 2997
 Hello, Copilot 2998
 Hello, Copilot 2999
-55
+Sum: 5050
 ```
 
 ### Step 6: より複雑な機能を追加
@@ -332,9 +328,9 @@ Hello, Copilot 2999
 `Program` クラスにもう少し複雑な機能を持った関数を追加させてみましょう。`Main` メソッドの上に以下のコメントを記述してください。
 
 * 英語
-  * `Function to randomly assign 4 digit codes to N x M matrix.`
+  * `// Function to randomly assign 4 digit codes to N x M matrix.`
 * 日本語
-  * `4 桁のランダムな数字を N x M 列生成する機能`
+  * `// 4 桁のランダムな数字を N x M 列生成する機能`
 
 以下のようなサジェストが表示されるので受け入れてください。
 
@@ -342,8 +338,7 @@ Hello, Copilot 2999
 .
 .
 .
-        // ロッカー番号として、4 桁のランダムな数字を N x M 列生成する機能
-        private static void GenerateLockerNumbers(int n, int m)
+        private static void GenerateRandomNumbers(int n, int m)
         {
             Random random = new Random();
             for (int i = 0; i < n; i++)
@@ -351,10 +346,7 @@ Hello, Copilot 2999
                 for (int j = 0; j < m; j++)
                 {
                     Console.Write(random.Next(1000, 10000));
-                    if (j != m - 1)
-                    {
-                        Console.Write(", ");
-                    }
+                    Console.Write(" ");
                 }
                 Console.WriteLine();
             }
@@ -364,7 +356,7 @@ Hello, Copilot 2999
 .
 ```
 
-`Main` メソッド内に追加したメソッドを実行するコードを追記します。[先程](#Step-5:-関数の記述) と同じ手順で行ってください。
+`Main` メソッド内に追加したメソッドを実行するコードを追記します。[先程](#step-5-関数の記述) と同じ手順で行ってください。
 
 ```C#
 .
@@ -378,19 +370,15 @@ Hello, Copilot 2999
                 Console.WriteLine($"Hello, Copilot {i}");
             }
 
-            // 1 から 10 までの数字を配列に格納
-            int[] numbers = new int[10];
-            for (int i = 0; i < 10; i++)
-            {
-                numbers[i] = i + 1;
-            }
+            // 1 から 100 までの数値を持つ配列を作成
+            int[] numbers = Enumerable.Range(1, 100).ToArray();
 
-            // 配列の中身を合計して出力
-            Console.WriteLine(Sum(numbers));
+            // 配列の中身を合計
+            int sum = Sum(numbers);
+            Console.WriteLine($"Sum: {sum}");
 
-            /* 新しく追記した部分 */
-            // 3 x 5 列のロッカー番号を生成して出力 
-            GenerateLockerNumbers(3, 5);
+            // 4 桁のランダムな数字を 5 x 5 列生成
+            GenerateRandomNumbers(5, 5);
         }
 .
 .
@@ -413,10 +401,12 @@ Hello, Copilot 2
 .
 .
 Hello, Copilot 2999
-55
-2807, 1062, 7433, 5027, 7251
-2970, 1526, 2614, 2746, 7719
-5619, 7298, 8802, 7344, 3956
+Sum: 5050
+4828 5752 1595 3975 7450 
+4066 3604 7527 1956 5962 
+8738 8331 4955 6979 1959 
+2514 2824 1992 5990 4637 
+2846 1221 4739 1395 5851 
 ```
 
 ### Step 7: メソッドのテストを追加
@@ -465,12 +455,14 @@ dotnet add HelloCopilotTest/HelloCopilotTest.csproj reference HelloCopilot/Hello
 Reference `..\HelloCopilot\HelloCopilot.csproj` added to the project.
 ```
 
-GitHub Copilot Chat にテストコードの生成を依頼してみましょう。Visual Studio Code のウィンドウ左にあるバーから GitHub Copilot Chat を開き、以下の文で問いかけてください。
+GitHub Copilot Chat にテストコードの生成を依頼してみましょう。Visual Studio Code のウィンドウ左にあるバーから GitHub Copilot Chat を開きます。
 
 ![GitHub Copilot Chat](./images/06_Copilot_Chat.png)
 
+以下の文で問いかけてください (※**もしクラス名やメソッド名が異なる場合は書き換えてください**※)。
+
 ```
-Program クラス内にある Sum メソッドと GenerateLockerNumbers メソッドのテストを実行するコードを生成してください。
+Program クラス内にある Sum メソッドと GenerateRandomNumbers メソッドのテストを実行するコードを生成してください。
 
 テストツールは MSTest を利用します。
 ```
@@ -480,9 +472,9 @@ Program クラス内にある Sum メソッドと GenerateLockerNumbers メソ�
 ```C#
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.IO;
+using System.Collections.Generic;
 
-namespace HelloCopilot.Tests
+namespace YourNamespace.Tests
 {
     [TestClass]
     public class ProgramTests
@@ -490,26 +482,34 @@ namespace HelloCopilot.Tests
         [TestMethod]
         public void TestSum()
         {
-            int[] array = { 1, 2, 3, 4, 5 };
-            int result = HelloCopilot.Program.Sum(array);
-            Assert.AreEqual(15, result);
+            // Arrange
+            int a = 5;
+            int b = 10;
+            int expected = 15;
+
+            // Act
+            int result = Program.Sum(a, b);
+
+            // Assert
+            Assert.AreEqual(expected, result);
         }
 
         [TestMethod]
-        public void TestGenerateLockerNumbers()
+        public void TestGenerateRandomNumbers()
         {
-            using (StringWriter sw = new StringWriter())
+            // Arrange
+            int count = 5;
+            int min = 1;
+            int max = 10;
+
+            // Act
+            List<int> result = Program.GenerateRandomNumbers(count, min, max);
+
+            // Assert
+            Assert.AreEqual(count, result.Count);
+            foreach (var number in result)
             {
-                Console.SetOut(sw);
-                HelloCopilot.Program.GenerateLockerNumbers(2, 3);
-                string result = sw.ToString().Trim();
-                string[] numbers = result.Split(new[] { ", " }, StringSplitOptions.None);
-                Assert.AreEqual(6, numbers.Length);
-                foreach (string number in numbers)
-                {
-                    Assert.IsTrue(int.TryParse(number, out int n));
-                    Assert.IsTrue(n >= 1000 && n < 10000);
-                }
+                Assert.IsTrue(number >= min && number <= max);
             }
         }
     }
@@ -528,17 +528,16 @@ dotnet test
 
 ```Shell
   Determining projects to restore...
-  Restored /workspaces/CopilotTraining/HelloCopilotTest/HelloCopilotTest.csproj (in 301 ms).
-  1 of 2 projects are up-to-date for restore.
-  HelloCopilot -> /workspaces/CopilotTraining/HelloCopilot/bin/Debug/net8.0/HelloCopilot.dll
-/workspaces/CopilotTraining/HelloCopilotTest/UnitTest1.cs(14,39): error CS0122: 'Program' is inaccessible due to its protection level [/workspaces/CopilotTraining/HelloCopilotTest/HelloCopilotTest.csproj]
-/workspaces/CopilotTraining/HelloCopilotTest/UnitTest1.cs(24,30): error CS0122: 'Program' is inaccessible due to its protection level [/workspaces/CopilotTraining/HelloCopilotTest/HelloCopilotTest.csproj]
+  All projects are up-to-date for restore.
+  HelloCopilot -> /workspaces/csharp-simple-demo/HelloCopilot/bin/Debug/net8.0/HelloCopilot.dll
+/workspaces/csharp-simple-demo/HelloCopilotTest/UnitTest1.cs(19,26): error CS0103: The name 'Program' does not exist in the current context [/workspaces/csharp-simple-demo/HelloCopilotTest/HelloCopilotTest.csproj]
+/workspaces/csharp-simple-demo/HelloCopilotTest/UnitTest1.cs(34,32): error CS0103: The name 'Program' does not exist in the current context [/workspaces/csharp-simple-demo/HelloCopilotTest/HelloCopilotTest.csproj]
 ```
 
-GitHub Copilot Chat にエラーの原因を尋ねてみましょう。GitHub Copilot Chat に以下の文で問いかけてください。
+GitHub Copilot Chat にエラーの原因を尋ねてみましょう。以下の文で問いかけてください。
 
 ```
-error CS0122: 'Program' is inaccessible due to its protection level
+error CS0103: The name 'Program' does not exist in the current context
 
 上記のエラーが発生します。原因は何ですか？
 ```
@@ -546,62 +545,67 @@ error CS0122: 'Program' is inaccessible due to its protection level
 原因と対処について回答してくれます。サンプルでは以下のように回答してくれました。
 
 ---
-エラーの原因は、`Program` クラスが `internal` 修飾子で定義されているため、テストプロジェクトからアクセスできないことです。テストプロジェクトからアクセスできるようにするためには、`Program` クラスを `public` に変更する必要があります。
+エラー `CS0103: The name 'Program' does not exist in the current context` は、Program クラスが現在のコンテキストで見つからないことを示しています。これは通常、以下のいずれかの理由で発生します：
 
-**修正手順**
+1. Program クラスが存在しない。
+2. Program クラスが異なる名前空間に存在する。
+3. Program クラスが正しくインポートされていない。
 
-1. `Program` クラスのアクセス修飾子を `internal` から `public` に変更します。
+以下の手順で問題を解決できます：
 
-**修正後のコード**
+1. Program クラスが存在することを確認します。
+2. Program クラスが異なる名前空間にある場合、その名前空間をインポートします。
+
+例えば、`Program` クラスが `YourNamespace` に存在する場合、以下のように名前空間をインポートします：
 
 ```C#
+using YourNamespace;
+```
+
+また、`Program` クラスが同じプロジェクト内に存在することを確認してください。
+
+修正例：
+
+```C#
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using YourNamespace; // 追加
 
-namespace HelloCopilot
+namespace YourNamespace.Tests
 {
-    public class Program
+    [TestClass]
+    public class ProgramTests
     {
-        // Int の配列を受け取り中身を合計して返す関数
-        private static int Sum(int[] array)
+        [TestMethod]
+        public void TestSum()
         {
-            int sum = 0;
-            foreach (int i in array)
-            {
-                sum += i;
-            }
-            return sum;
+            // Arrange
+            int a = 5;
+            int b = 10;
+            int expected = 15;
+
+            // Act
+            int result = Program.Sum(a, b);
+
+            // Assert
+            Assert.AreEqual(expected, result);
         }
 
-        // ロッカー番号として、4 桁のランダムな数字を N x M 列生成する機能
-        private static void GenerateLockerNumbers(int N, int M)
+        [TestMethod]
+        public void TestGenerateRandomNumbers()
         {
-            Random random = new Random();
-            for (int i = 0; i < N; i++)
-            {
-                for (int j = 0; j < M; j++)
-                {
-                    Console.Write(random.Next(1000, 10000));
-                    if (j < M - 1)
-                    {
-                        Console.Write(", ");
-                    }
-                }
-                Console.WriteLine();
-            }
+            // テストメソッドの内容
         }
     }
 }
 ```
 
-これで、テストプロジェクトから `Program` クラスにアクセスできるようになります。再度テストを実行してみてください。
+このように、`YourNamespace` をインポートすることで、`Program` クラスが見つかるようになります。
 
 ---
 
-上記の通り対応してみましょう。`HelloCopilot/Program.cs` を開き、修飾子を修正したあとに再度テストを実行します。コードの変更を保存し、ターミナルから以下のコマンドを実行してください。
+上記の通り対応してみましょう。`HelloCopilot/Program.cs` を開き、インポート文を追加したあとに再度テストを実行します。コードの変更を保存し、ターミナルから以下のコマンドを実行してください。
 
 ```Shell
 dotnet test
@@ -612,10 +616,19 @@ dotnet test
 ```Shell
   Determining projects to restore...
   All projects are up-to-date for restore.
-  HelloCopilot -> /workspaces/CopilotTraining/HelloCopilot/bin/Debug/net8.0/HelloCopilot.dll
-/workspaces/CopilotTraining/HelloCopilotTest/UnitTest1.cs(14,47): error CS0117: 'Program' does not contain a definition for 'Sum' [/workspaces/CopilotTraining/HelloCopilotTest/HelloCopilotTest.csproj]
-/workspaces/CopilotTraining/HelloCopilotTest/UnitTest1.cs(24,38): error CS0117: 'Program' does not contain a definition for 'GenerateLockerNumbers' [/workspaces/CopilotTraining/HelloCopilotTest/HelloCopilotTest.csproj]
+  HelloCopilot -> /workspaces/csharp-simple-demo/HelloCopilot/bin/Debug/net8.0/HelloCopilot.dll
+/workspaces/csharp-simple-demo/HelloCopilotTest/UnitTest1.cs(20,26): error CS0122: 'Program' is inaccessible due to its protection level [/workspaces/csharp-simple-demo/HelloCopilotTest/HelloCopilotTest.csproj]
+/workspaces/csharp-simple-demo/HelloCopilotTest/UnitTest1.cs(35,32): error CS0122: 'Program' is inaccessible due to its protection level [/workspaces/csharp-simple-demo/HelloCopilotTest/HelloCopilotTest.csproj]
 ```
+
+<br>
+
+
+**💡 Tips 💡**
+
+GitHub Copilot Chat に問いかける際、`#terminalLastCommand` と入力したあとに質問すると、ターミナルで実行したコマンドの最終結果をもとに回答してくれます。
+
+<br>
 
 どうやら先程の対応では不十分だったようです。GitHub Copilot や GitHub Copilot Chat は必ず完全な回答を返してくれるわけではありません。何度かやり取りを繰り返してテストを完遂してみましょう。サンプルでは最終的に以下のコードになりました。
 
@@ -631,31 +644,27 @@ namespace HelloCopilot
 {
     public class Program
     {
-
         // Int の配列を受け取り中身を合計して返す関数
-        public static int Sum(int[] array)
+        public static int Sum(int[] numbers)
         {
             int sum = 0;
-            foreach (int i in array)
+            foreach (var number in numbers)
             {
-                sum += i;
+                sum += number;
             }
             return sum;
         }
 
-        // ロッカー番号として、4 桁のランダムな数字を N x M 列生成する機能
-        public static void GenerateLockerNumbers(int N, int M)
+        // 4 桁のランダムな数字を N x M 列生成する機能
+        public static void GenerateRandomNumbers(int n, int m)
         {
             Random random = new Random();
-            for (int i = 0; i < N; i++)
+            for (int i = 0; i < n; i++)
             {
-                for (int j = 0; j < M; j++)
+                for (int j = 0; j < m; j++)
                 {
                     Console.Write(random.Next(1000, 10000));
-                    if (j < M - 1)
-                    {
-                        Console.Write(", ");
-                    }
+                    Console.Write(" ");
                 }
                 Console.WriteLine();
             }
@@ -669,18 +678,15 @@ namespace HelloCopilot
                 Console.WriteLine($"Hello, Copilot {i}");
             }
 
-            // 1 から 10 までの数値を持つ配列を作成
-            int[] array = new int[10];
-            for (int i = 0; i < 10; i++)
-            {
-                array[i] = i + 1;
-            }
+            // 1 から 100 までの数値を持つ配列を作成
+            int[] numbers = Enumerable.Range(1, 100).ToArray();
 
-            // 配列の中身を合計して出力
-            Console.WriteLine(Sum(array));
+            // 配列の中身を合計
+            int sum = Sum(numbers);
+            Console.WriteLine($"Sum: {sum}");
 
-            // 5 x 5 列のロッカー番号を生成して出力
-            GenerateLockerNumbers(5, 5);
+            // 4 桁のランダムな数字を 5 x 5 列生成
+            GenerateRandomNumbers(5, 5);
         }
     }
 }
@@ -688,43 +694,64 @@ namespace HelloCopilot
 
 ```C#
 // HelloCopilotTest/UnitTest1.cs
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.IO;
+using System.Collections.Generic;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using HelloCopilot;
 
-namespace HelloCopilot.Tests
+namespace HelloCopilotTest
 {
     [TestClass]
     public class ProgramTests
     {
         [TestMethod]
-        public void TestSum()
+        public void Sum_ShouldReturnCorrectSum()
         {
-            int[] array = { 1, 2, 3, 4, 5 };
-            int result = HelloCopilot.Program.Sum(array);
-            Assert.AreEqual(15, result);
+            // Arrange
+            int[] numbers = { 1, 2, 3, 4, 5 };
+            int expectedSum = 15;
+
+            // Act
+            int actualSum = Program.Sum(numbers);
+
+            // Assert
+            Assert.AreEqual(expectedSum, actualSum);
         }
 
         [TestMethod]
-        public void TestGenerateLockerNumbers()
+        public void GenerateRandomNumbers_ShouldGenerateCorrectNumberOfRowsAndColumns()
         {
-            using (StringWriter sw = new StringWriter())
+            // Arrange
+            int n = 3;
+            int m = 4;
+            var output = new System.IO.StringWriter();
+            var originalOut = Console.Out;
+            Console.SetOut(output);
+
+            try
             {
-                Console.SetOut(sw);
-                HelloCopilot.Program.GenerateLockerNumbers(2, 3);
-                string result = sw.ToString().Trim();
-                string[] lines = result.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
-                Assert.AreEqual(2, lines.Length); // 2行の出力があるはず
-                foreach (string line in lines)
+                // Act
+                Program.GenerateRandomNumbers(n, m);
+
+                // Assert
+                var consoleOutput = output.ToString();
+                var lines = consoleOutput.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+                Assert.AreEqual(n, lines.Length);
+                foreach (var line in lines)
                 {
-                    string[] numbers = line.Split(new[] { ", " }, StringSplitOptions.None);
-                    Assert.AreEqual(3, numbers.Length); // 各行に3つの数字があるはず
-                    foreach (string number in numbers)
+                    var numbers = line.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                    Assert.AreEqual(m, numbers.Length);
+                    foreach (var number in numbers)
                     {
-                        Assert.IsTrue(int.TryParse(number, out int n));
-                        Assert.IsTrue(n >= 1000 && n < 10000);
+                        Assert.IsTrue(int.TryParse(number, out int result));
+                        Assert.IsTrue(result >= 1000 && result <= 9999);
                     }
                 }
+            }
+            finally
+            {
+                // Restore the original Console.Out
+                Console.SetOut(originalOut);
             }
         }
     }
@@ -735,15 +762,15 @@ namespace HelloCopilot.Tests
 # 実行結果
   Determining projects to restore...
   All projects are up-to-date for restore.
-  HelloCopilot -> /workspaces/CopilotTraining/HelloCopilot/bin/Debug/net8.0/HelloCopilot.dll
-  HelloCopilotTest -> /workspaces/CopilotTraining/HelloCopilotTest/bin/Debug/net8.0/HelloCopilotTest.dll
-Test run for /workspaces/CopilotTraining/HelloCopilotTest/bin/Debug/net8.0/HelloCopilotTest.dll (.NETCoreApp,Version=v8.0)
+  HelloCopilot -> /workspaces/csharp-simple-demo/HelloCopilot/bin/Debug/net8.0/HelloCopilot.dll
+  HelloCopilotTest -> /workspaces/csharp-simple-demo/HelloCopilotTest/bin/Debug/net8.0/HelloCopilotTest.dll
+Test run for /workspaces/csharp-simple-demo/HelloCopilotTest/bin/Debug/net8.0/HelloCopilotTest.dll (.NETCoreApp,Version=v8.0)
 VSTest version 17.11.0 (x64)
 
 Starting test execution, please wait...
 A total of 1 test files matched the specified pattern.
 
-Passed!  - Failed:     0, Passed:     2, Skipped:     0, Total:     2, Duration: 19 ms - HelloCopilotTest.dll (net8.0)
+Passed!  - Failed:     0, Passed:     2, Skipped:     0, Total:     2, Duration: 64 ms - HelloCopilotTest.dll (net8.0)
 ```
 
 以上でワークショップは終了です。
